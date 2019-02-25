@@ -1,4 +1,6 @@
 /.idea
+/app/Http/Controllers/TestController.php
+
 /node_modules
 /public/hot
 /public/storage
