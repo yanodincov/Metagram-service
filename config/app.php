@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Custom Service Providers
+        App\Providers\MetagramServiceProvider::class,
+
     ],
 
     /*
@@ -224,6 +227,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // Custom Facades
+        'Metagram' => App\Facades\MetagramServiceFacade::class,
     ],
 
 ];

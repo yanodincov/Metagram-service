@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWordsTable extends Migration
+class CreateWordChainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateWordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('words', function (Blueprint $table) {
+        Schema::create('word_chains', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('word', 4);
+            $table->integer('word_first_id');
+            $table->integer('word_second_id');
+            $table->index(['word_first_id', 'word_second_id']);
         });
     }
 
@@ -26,6 +28,6 @@ class CreateWordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('words');
+        Schema::dropIfExists('word_chains');
     }
 }
