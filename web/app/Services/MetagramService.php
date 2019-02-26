@@ -134,7 +134,6 @@ class MetagramService
 
             if ($id == $end) {
                 $this->way = [];
-                $chain[] = $end;
 
                 return $chain;
             } else {
