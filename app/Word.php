@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Word extends Model
 {
-    protected $guarded = ['id'];
+    protected $guarded = [];
     public $timestamps = false;
 }

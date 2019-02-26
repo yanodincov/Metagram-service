@@ -14,7 +14,6 @@ class CreateWordChainsTable extends Migration
     public function up()
     {
         Schema::create('word_chains', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('word_first_id');
             $table->integer('word_second_id');
             $table->index(['word_first_id', 'word_second_id']);

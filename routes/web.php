@@ -12,4 +12,8 @@
 */
 
 
-Route::get('/generate', 'TestController@generateChains');
+
+Route::group(['as' => 'metagram.'],function () {
+    Route::get('/', 'MetagramController@index')->name('index');
+    Route::get('/generate', 'MetagramController@generate')->name('generate');
+});
