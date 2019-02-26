@@ -31,14 +31,6 @@ services:
       - mysqldb
     restart: always
 
-  composer:
-    image: composer:1.8.4
-    container_name: metagram-composer
-    user: '33'
-    volumes:
-      - metagram-app:/app
-    command: ['install']
-
   mysqldb:
     image: mysql:${MYSQL_VERSION}
     container_name: ${MYSQL_HOST}
@@ -56,3 +48,4 @@ services:
 volumes:
   metagram-app:
     driver: local
+
