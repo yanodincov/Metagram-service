@@ -37,7 +37,7 @@ class MetagramService
         } else {
             $words = [];
 
-            foreach ($result['path'] as $word_id) {
+            foreach ($result as $word_id) {
                 $word = Word::find($word_id);
                 $words[] = $word->word;
             }
@@ -125,29 +125,28 @@ class MetagramService
         $new_start = [];
 
         if (!is_array($start)) {
-            $start = array(
-                ['id' => $start, 'path' => []]
-            );
+            $start = array([$start]);
             $this->way[] = $start;
         }
 
         foreach ($start as $chain) {
-            if ($chain['id'] == $end) {
+            $id = end($chain);
+
+            if ($id == $end) {
                 $this->way = [];
-                $chain['path'][] = $end;
+                $chain[] = $end;
+
                 return $chain;
             } else {
-                    $this->way[] = $chain['id'];
-
-                    $new_chains = WordChain::where('word_first_id', $chain['id'])->get();
+                    $this->way[] = $id;
+                    $new_chains = WordChain::where('word_first_id', $id)->get();
 
                     foreach ($new_chains as $new_chain) {
                         // Проверка на повторное использование
                         if (!in_array($new_chain->word_second_id, $this->way)) {
-                            $new_start[] = array(
-                                'id' => $new_chain->word_second_id,
-                                'path' => array_merge($chain['path'], [$chain['id']])
-                            );
+                            $chain_copy = $chain;
+                            $chain_copy[] = $new_chain->word_second_id;
+                            $new_start[] = $chain_copy;
                         }
                     }
             }

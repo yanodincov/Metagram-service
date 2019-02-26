@@ -7,18 +7,35 @@
         <div class="row h-100">
             <div class="col-12  h-100 d-flex justify-content-center align-items-center">
                 <form class="w-50" method="get" action="{{ route('metagram.index') }}">
-                    @if(!empty($errors))
+                    @if(!empty($error))
                         <div class="alert alert-danger">
-                            @foreach($errors as $search_error)
-                                <p class="mb-0">{{ $search_error }}</p>
+                            @foreach($error as $message)
+                                <p class="mb-0">{!! $message  !!}</p>
                             @endforeach
                         </div>
                     @endif
-                    @if(!empty($results))
+                    @if(!empty($result))
                         <div class="alert alert-success">
-                            @foreach($results as $key => $word)
-                                <p class="mb-0">{{ $key + 1 }}) {{ $word }}</p>
-                            @endforeach
+                            <p class="mb-1">
+                                Слово "{{ $result[0] }}" превращается в слово "{{ end($result) }}"
+                            </p>
+                            <p>
+                                Количество итераций: <strong>{{ count($result) }}</strong>
+                            </p>
+                            <ol>
+                                @foreach($result as $chain)
+                                    <li class="mb-0">{{ $chain }}</li>
+                                @endforeach
+                            </ol>
+                        </div>
+                    @endisset
+                    @if(!empty($info))
+                        <div class="alert alert-info">
+                            <ol>
+                                @foreach($info as $message)
+                                    <li class="mb-0">{{ $message }}</li>
+                                @endforeach
+                            </ol>
                         </div>
                     @endisset
                     <div class="w-100 bg-white border rounded p-4">
