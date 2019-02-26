@@ -31,7 +31,7 @@
 
 После установки и запуска образа необходимо выполнить следующую команду для устранения зависимостей с помощью Composer:
     
-    docker exec metagram-php php composer install --prefer-source --no-interaction
+    docker exec metagram-php composer install --prefer-source --no-interaction
 
 Также нужно запустить миграции:
 
