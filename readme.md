@@ -29,7 +29,11 @@
       
     docker-compose up -d
 
-После установки и запуска образа необходимо выполнить следующую команду для запуска миграций:
+После установки и запуска образа необходимо выполнить следующую команду для устранения зависимостей с помощью Composer:
+    
+    docker exec metagram-php php composer install --prefer-source --no-interaction
+
+Также нужно запустить миграции:
 
     docker exec -u 33 metagram-php php artisan migrate
 
