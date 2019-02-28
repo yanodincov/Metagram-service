@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD4SURBVDhPzdGxSwJhHIfxSxQa0ggCBzc3cXLpL6jRoUEc3QwiQTcnFZtaImgIdwUJBId2W6vBQXGLbLRV3Bx8vu97HnHg0UGDD3y433tw572vzl7XxKdrikuE6gV1RFHDO0KlF7ziDmOUESq9oIciHjGDviawPNp29LZwgAuscYydRaADWyCHhrsW/foNAjvHG/Tgk274yqKFKpK64a8P7bWAJY6w7Qw/qOAecxzC6xQrPLu+cYVtXdza0aTtnNjRppMe2tFUwsCOphGu7WhKuFcvnXTMjiatf3/iA7RFFccX0mb1x3RoE3xA2+sgdPqbM0iZ1f/kOBsmUSwbPM7FgQAAAABJRU5ErkJggg==">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

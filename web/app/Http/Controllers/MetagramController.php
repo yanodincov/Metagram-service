@@ -8,7 +8,24 @@ use Validator;
 
 class MetagramController extends Controller
 {
-    public function index(Request $request)
+    public function index()
+    {
+        return view('metagram.index');
+    }
+
+    public function generate()
+    {
+        $num_data = Metagram::generateBaseData();
+        return json_encode([
+            'type' => 'info',
+            'message' => [
+                'Собрано слов: ' . $num_data['word'],
+                'Найдено связей: ' . $num_data['chain']
+            ]
+        ]);
+    }
+
+    public function getWay(Request $request)
     {
         $messages = array(
             'word_1.required' => '<strong>Первое слово</strong> должно быть указано',
@@ -27,10 +44,9 @@ class MetagramController extends Controller
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
-            return view('metagram.index', [
-                'error' => $validator->errors()->all(),
-                'word_1' => $request->word_1,
-                'word_2' => $request->word_2
+            return json_encode([
+                'type' => 'error',
+                'message' => $validator->errors()->all()
             ]);
         }
 
@@ -51,26 +67,16 @@ class MetagramController extends Controller
             if (!empty($chain['error'][3])) {
                 $error[] = 'Связь между словом ' . $request->word_1 . ' и ' . $request->word_2 . ' не найдена';
             }
+
+            return json_encode([
+                'type' => 'error',
+                'message' => $error
+            ]);
         } else {
-            $result = $chain;
+            return json_encode([
+               'type' => 'success',
+               'message' => $chain
+            ]);
         }
-
-        return view('metagram.index', [
-            'result' => $result,
-            'error' => $error,
-            'word_1' => $request->word_1,
-            'word_2' => $request->word_2
-        ]);
-    }
-
-    public function generate()
-    {
-        $num_data = Metagram::generateBaseData();
-        return view('metagram.index', [
-            'info' => [
-                'Собрано слов: ' . $num_data['word'],
-                'Найдено связей: ' . $num_data['chain']
-            ]
-        ]);
     }
 }

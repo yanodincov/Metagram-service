@@ -15,5 +15,6 @@
 
 Route::group(['as' => 'metagram.'],function () {
     Route::get('/', 'MetagramController@index')->name('index');
-    Route::get('/generate', 'MetagramController@generate')->name('generate');
+    Route::post('/getway', 'MetagramController@getWay')->name('getWay');
+    Route::post('/generate', 'MetagramController@generate')->name('generate');
 });
