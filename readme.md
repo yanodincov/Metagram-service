@@ -26,7 +26,7 @@
 
 Для установки сервиса необходимо установить [Docker](https://docs.docker.com/v17.12/install/#server) и [Docker Compose](https://docs.docker.com/compose/install/).
 
-После установки зайдите в папку проекта и запустите образ с помощью Docker Compose:
+После загрузки проекта зайдите в папку проекта и запустите образ с помощью Docker Compose:
       
     docker-compose up -d
 
